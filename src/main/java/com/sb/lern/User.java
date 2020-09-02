@@ -48,6 +48,7 @@ public class User {
     public String getTelNumber (int indexTel) {
         return telNumber.get(indexTel);
     }
+    public ArrayList<String> getTelNumberList() {return  telNumber;}
     //изменение остатка неа счету пользователя
     public boolean changeSumAccount (int indexOfAccName, Float newValue) {
         if (usersAccountBalans.get(indexOfAccName)!= null) {
