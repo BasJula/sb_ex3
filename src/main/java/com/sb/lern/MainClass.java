@@ -1,4 +1,5 @@
 package com.sb.lern;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainClass {
@@ -15,8 +16,37 @@ public class MainClass {
                     System.out.println(i + ": " + app.getListOfUsers().get(i).getUserName());
                 }
                     command = sc.nextInt();
-                    System.out.println("Выбран пользователь: " + app.getListOfUsers().get(command).getUserName());
-                    System.out.println("Выбрите действие:\n 1 -> Оплатить за телефон \n 2 -> добавить номер телефона \n 3-> добавить дополнительный счет \n 20 -> завершить приложение\"");
+                    User selectedUser = app.getListOfUsers().get(command);
+                    System.out.println("Выбран пользователь: " + selectedUser.getUserName());
+                    System.out.println("Выберите действие:\n 1 -> Оплатить за телефон \n 2 -> добавить номер телефона \n 3-> добавить дополнительный счет \n 20 -> завершить приложение\"");
+                    command = sc.nextInt();
+                    switch (command) {
+                        case 1:
+                            System.out.println("Выберите номер телефона");
+                            for (int i=0; i < selectedUser.getTelNumberList().size(); i++) {
+                                System.out.println(i + ": " + selectedUser.getTelNumber(i));
+                            }
+                            int indexOfTel = sc.nextInt();
+                            String telNum = selectedUser.getTelNumber(indexOfTel);
+                            System.out.println("Выбран номер телефона: " + telNum);
+
+                            System.out.println("Выберите свой счет");
+                            for (int i=0; i < selectedUser.getTelNumberList().size(); i++) {
+                                System.out.println(i + ": " + selectedUser.getTelNumber(i));
+                            }
+                            int indexOfAccount = sc.nextInt();
+
+                            System.out.println("Введите сумму для оплаты: ");
+                            float sumOfPayment = sc.nextFloat();
+                            System.out.println(app.doPayment(selectedUser, indexOfTel, 0, sumOfPayment));
+
+
+                        case 2:
+                        case 3:
+
+
+
+                    }
                 return;
             case 2:
                 System.out.println("Введите имя пользователя: ");
