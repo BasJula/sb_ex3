@@ -25,13 +25,13 @@ public class Application {
     }
 
     //производим платеж выбранного телефона с выбранного Юзера на выбранную сумму
-    public String doPayment (int indexOfUser, int indexOfTel, int indexOfAccName, float coastOfPayment) {
-        float summaOnAccaunt = listOfUsers.get(indexOfUser).getBalans(indexOfAccName); //сумма на выбраннм счете
-        String telefonNumber = listOfUsers.get(indexOfUser).getTelNumber(indexOfTel);
+    public String doPayment (User user, int indexOfTel, int indexOfAccName, float coastOfPayment) {
+        float summaOnAccaunt = user.getBalans(indexOfAccName); //сумма на выбраннм счете
+        String telefonNumber = user.getTelNumber(indexOfTel);
         if (summaOnAccaunt<coastOfPayment) {return "На счету нет денег!";}
         if (telefonNumber == null) { return "Нет такого номера";}
-        listOfUsers.get(indexOfUser).changeSumAccount(indexOfAccName, (summaOnAccaunt-coastOfPayment));
-    return "Платеж выполнен успешно. Остаток на счете " + listOfUsers.get(indexOfUser).getBalans(indexOfAccName);
+        user.changeSumAccount(indexOfAccName, (summaOnAccaunt-coastOfPayment));
+    return "Платеж выполнен успешно. Остаток на счете " + user.getBalans(indexOfAccName);
     }
 
 }
